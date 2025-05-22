@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Control de Semáforo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h2>Control de Semáforo</h2>
+
+  <div>
+    <button onclick="toggleSemaforo()">Encender / Apagar</button>
+    <label>Velocidad (segundos): <input type="number" id="velocidad" value="3" min="1" max="10" onchange="ajustarVelocidad()"></label>
+  </div>
+
+  <div class="contenedor">
+    <div>
+      <h3>Semáforo 1</h3>
+      <div class="semaforo" id="s1">
+        <div class="luz" id="s1-rojo"></div>
+        <div class="luz" id="s1-amarillo"></div>
+        <div class="luz" id="s1-verde"></div>
+      </div>
+    </div>
+
+    <div>
+      <h3>Semáforo 2</h3>
+      <div class="semaforo" id="s2">
+        <div class="luz" id="s2-rojo"></div>
+        <div class="luz" id="s2-amarillo"></div>
+        <div class="luz" id="s2-verde"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

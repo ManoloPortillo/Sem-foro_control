@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login Semáforo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h2>Iniciar sesión o registrarse</h2>
+  <input type="text" id="username" placeholder="Usuario">
+  <input type="password" id="password" placeholder="Contraseña">
+  <button onclick="login()">Iniciar Sesión</button>
+  <button onclick="register()">Registrarse</button>
+
+  <script>
+    function register() {
+      const user = document.getElementById("username").value;
+      const pass = document.getElementById("password").value;
+      if (!user || !pass) return alert("Llene todos los campos");
+
+      const data = localStorage.getItem("users") || "{}";
+      const users = JSON.parse(data);
+      if (users[user]) return alert("Usuario ya existe");
+
+      users[user] = pass;
+      localStorage.setItem("users", JSON.stringify(users));
+      alert("Usuario registrado correctamente");
+    }
+
+    function login() {
+      const user = document.getElementById("username").value;
+      const pass = document.getElementById("password").value;
+
+      const data = localStorage.getItem("users") || "{}";
+      const users = JSON.parse(data);
+      if (users[user] === pass) {
+        localStorage.setItem("loggedUser", user);
+        window.location.href = "control.html";
+      } else {
+        alert("Usuario o contraseña incorrectos");
+      }
+    }
+  </script>
+</body>
+</html>
